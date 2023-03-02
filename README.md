@@ -1,4 +1,4 @@
-# taufiqqq.github.io
+# Learn Web Dev - Taufiq
 
 Every web dev projects that I think is interesting
 
