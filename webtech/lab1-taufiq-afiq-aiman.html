@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Lab 1</title>
+    <script>
+      function addFruit() {
+        var fruitName = document.getElementById("fruit_name").value;
+
+        if (fruitName.trim() === "") {
+          alert("Nama buah mana boleh kosong >n<");
+          return;
+        }
+
+        var table = document.getElementById("FruitList");
+        var newRow = document.createElement("tr");
+        newRow.id = fruitName;
+
+        var nameCell = document.createElement("td");
+        nameCell.innerHTML = fruitName;
+
+        var deleteCell = document.createElement("td");
+        deleteCell.setAttribute("align", "center");
+        deleteCell.innerHTML =
+          '<a href="#" onclick="deleteFruit(this.parentNode.parentNode);">Delete</a>';
+
+        newRow.appendChild(nameCell);
+        newRow.appendChild(deleteCell);
+
+        table.appendChild(newRow);
+        
+        document.getElementById("fruit_name").value = "";
+        table.appendChild(document.getElementById("InputRow"));
+      }
+
+      function deleteFruit(row) {
+        row.parentNode.removeChild(row);
+      }
+    </script>
+  </head>
+  <body>
+    <table border="1" width="480" id="FruitList">
+      <tr>
+        <th>Fruit Name</th>
+        <th>Operation</th>
+      </tr>
+      <tr id="Apple">
+        <td>Apple</td>
+        <td align="center">
+          <a href="#" onclick="deleteFruit(this.parentNode.parentNode);"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      <tr id="Lemon">
+        <td>Lemon</td>
+        <td align="center">
+          <a href="#" onclick="deleteFruit(this.parentNode.parentNode);"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      <tr id="InputRow">
+        <td><input type="text" id="fruit_name" /></td>
+        <td align="center">
+          <input type="button" onclick="addFruit();" value="Add" />
+        </td>
+      </tr>
+    </table>
+    <pre>
+    <b>Group Members:</b>
+    1. MUHAMMAD TAUFIQ BIN JURIMI
+    2. AFIQ FAHMI BIN ROSLAN
+    3. AIMAN HAIKAL BIN ABDUL RUSLI
+    </pre>
+  </body>
+</html>

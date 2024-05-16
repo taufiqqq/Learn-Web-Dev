@@ -1,0 +1,69 @@
+<html>
+
+<body>
+    <h2>Credit Card Search Result</h2>
+    <table border="1">
+        <tr>
+            <th>Type</th>
+            <th>Bank</th>
+            <th>Limit</th>
+        </tr>
+
+    </table>
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    // search keywords info to test the search function
+    var searchKey1 = { type: 'Visa', bank: 'Maybank' };
+    var searchKey2 = { type: 'Visa', bank: 'CIMB' };
+
+    // assume all users have/use Mozilla-based browsers
+    var ajax = new XMLHttpRequest();
+
+    // change the url to where you host the php script
+    ajax.open('POST', 'http://localhost/AD05/CreditCardSearch.php', true);
+    
+    ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // try either one of this
+    var jsonStr = JSON.stringify(searchKey1); // found
+    //var jsonStr = JSON.stringify(searchKey2); // not found
+
+    console.log(jsonStr);
+    ajax.send("jsonStr=" + jsonStr);
+
+    ajax.onload = function () {
+        if (this.status == 200) {
+            console.log(this.responseText);
+            var result = JSON.parse(ajax.responseText);
+
+            if (result.found) {
+                var ccardFound = result.card;
+
+                console.log(ccardFound.type);
+                var td1 = $('<td>').text(ccardFound.type);
+                var td2 = $('<td>').text(ccardFound.bank);
+                var td3 = $('<td>').text(ccardFound.limit);
+
+                var row = $('<tr>');
+                row.append(td1);
+                row.append(td2);
+                row.append(td3);
+
+                $('table').append(row);
+
+            } else {
+                alert("Sorry can't found the card: " + jsonStr);
+            }
+
+
+        } else {
+            alert("AJAX connection error: " + this.status);
+        }
+    }
+
+    console.log("Hello from line 56")
+
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple XMLHttpRequest Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1 id="title">Topek hensem mmuah</h1>
+    <button id="btn">Make Request</button>
+    <button id="btn1">Make Request JQ</button>
+    <div id="output"></div>
+
+    <script>
+      document.getElementById("btn").addEventListener("click", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            document.getElementById("output").innerHTML =
+              "Title: " + response.title;
+            $("h1#title").text(response.title);
+            $("h1#title").css("color", "blue");
+          }
+        };
+        xhr.send();
+        var sibling = $("h1").siblings();
+
+        sibling.each(function () {
+          if ($(this).attr("id") === "btn") {
+            $(this).css("font-weight", "bold");
+          }
+        });
+      });
+
+      $(document).ready(function () {
+        $("#btn1").on("click", function () {
+          $.ajax({
+            url: "https://jsonplaceholder.typicode.com/posts/2",
+            method: "GET",
+            success: function (response) {
+              $("#output").html("Title: " + response.title);
+              $("#title").text(response.title).css("color", "blue");
+            },
+            error: function (xhr, status, error) {
+              console.error("Error:", error);
+            },
+          });
+
+          $("h1").siblings("#btn").css("font-weight", "bold");
+        });
+      });
+    </script>
+  </body>
+</html>

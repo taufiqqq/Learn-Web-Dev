@@ -1,0 +1,18 @@
+<html>
+  <body id="main">
+    <h1>DOM Elements</h1>
+    Example of elements:
+    <ul>
+      <li>Header</li>
+      <li>Paragraph</li>
+    </ul>
+    Visit W3School for more example.
+  </body>
+  <script>
+    var bodyChilds = document.getElementById("main").childNodes;
+    console.log(bodyChilds.length);
+    for (var i = 0; i < bodyChilds.length; i++) {
+      console.log(bodyChilds[i].nodeName + " : " + bodyChilds[i].nodeValue);
+    }
+  </script>
+</html>
