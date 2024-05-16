@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var companyInfo = {
+        name: "acme sdn bhd",
+        staff: [
+          {
+            name: "ali samad",
+            age: 40,
+            areaOfExpertise: ["network", "troubleshooting", "comm"],
+            contactInfo: {
+              email: "alisa@gmail.com",
+              phoneNum: "60165653191",
+            },
+            isActive: true,
+          },
+          {
+            name: "ratny",
+            age: 30,
+            areaOfExpertise: ["human capital", "management", "marketing"],
+            contactInfo: {
+              email: "ratna@gmail.com",
+              phoneNum: "2908374",
+            },
+            isActive: true,
+          },
+        ],
+      };
+
+      console.log(JSON.stringify(companyInfo));
+    </script>
+  </body>
+</html>

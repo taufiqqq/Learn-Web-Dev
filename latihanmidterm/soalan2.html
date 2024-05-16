@@ -1,0 +1,42 @@
+<html>
+  <!-- PROGRAM #2-->
+  <body>
+    <pre>
+<b>Cylinder radius:</b> <input type="text" id="radius"size="5">
+<b>Cylinder height:</b> <input type="text" id="height"size="5">
+</pre>
+    Click either one below to calculate cylinder volume.
+    <br /><br />
+    <button onclick="CylinderVolume_JS()">Calculate Cylinder Volume-JS</button>
+    <button onclick="CylinderVolume_JQ()">Calculate Cylinder Volume-JQ</button>
+    <br />
+    <pre><b>Cylinder volume:</b><span id="result"></span></pre>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      var pi = 3.14;
+      function CylinderVolume_JS() {
+        //a. Implementation using vanilla javascript (pure javascript)
+        //a.i extract radius and height from form field
+        var radius = parseFloat(document.getElementById("radius").value);
+        var height = parseFloat(document.getElementById("height").value);
+        
+        //a.ii do the cylinder volume calculation
+        var volume = 3.14 * radius * radius * height;
+        //a.iii display output in the span (result) using innerHTML
+        document.getElementById("result").innerHTML = volume;
+      }
+      function CylinderVolume_JQ() {
+        //b. Implementation using jQuery library
+        //b.i extract radius and height from form field
+        var radius = parseFloat($("#radius").val());
+        var height = parseFloat($("#height").val());
+        
+        //b.ii do the cylinder volume calculation
+        var volume = 3.14 * radius * radius * height;
+        //b.iii display output in the span (result) using jquery text()
+        $("#result").text(volume);
+      }
+    </script>
+  </body>
+</html>

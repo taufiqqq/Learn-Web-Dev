@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+  <form id="frm-passwd">
+  Please create password <input type="text" id="txtbox2" /><br>
+  <input type="submit" id="btn1" value="validate">
+  </form>
+  <script>
+  // a. add listener to event - form submit
+  document.getElementById("frm-passwd").addEventListener("submit",
+  function (event) {
+  event.preventDefault();
+  
+  var password = document.getElementById("txtbox2").value;
+  var regex = /[a-z\d$%&@#]{10,20}/;
+  
+  if (regex.test(password)) {
+  alert("Password is valud");
+  } else {
+  alert("Password is invalid.");
+  }
+  });
+  </script>
+  </body>
+</html>

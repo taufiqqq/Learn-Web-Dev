@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>Create Table Using JavaScript & HTML DOM</title>
+  </head>
+  <body>
+    <!-- do not add any html code in order to answer this question-->
+    <p>The following table was coded directly in the HTML code</p>
+    <table width="200" border="10" cellpadding="5" cellspacing="5">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+    </table>
+    <p></p>
+    <h4>Create Table Using JavaScript & HTML DOM</h4>
+    <input
+      type="button"
+      id="btn1"
+      value="Click to create simple table
+ (1row & 2 columns) "
+    />
+    <input
+      type="button"
+      id="btn2"
+      value="Click to create table (2 rows & 4
+ columns)"
+    />
+    <p></p>
+  </body>
+  <script>
+    document.getElementById("btn1").addEventListener("click", function (event) {
+      event.preventDefault();
+      // get the reference for the body
+      var body = document.getElementsByTagName("body").item(0);
+      // create table element
+      var table = document.createElement("table");
+
+      table.setAttribute("width", "200");
+      table.setAttribute("border", "1");
+      table.setAttribute("cellpadding", "1");
+      table.setAttribute("cellspacing", "1");
+      var row1 = document.createElement("tr");
+      var row1col1 = document.createElement("td");
+      row1col1.innerHTML = "row1 col1";
+      var row1col2 = document.createElement("td");
+      row1col2.innerHTML = "row1 col2";
+      row1.appendChild(row1col1);
+      row1.appendChild(row1col2);
+      table.appendChild(row1);
+      body.appendChild(table);
+    });
+    //write your answer for btn2 click- starts here
+    document.getElementById("btn2").addEventListener("click", function (event) {
+      event.preventDefault();
+      // get the reference for the body
+      var body = document.getElementsByTagName("body").item(0);
+      // create table element
+      var table = document.createElement("table");
+
+      table.setAttribute("width", "200");
+      table.setAttribute("border", "1");
+      table.setAttribute("cellpadding", "1");
+      table.setAttribute("cellspacing", "1");
+      var row1 = document.createElement("tr");
+      var row1col1 = document.createElement("td");
+      row1col1.innerHTML = "row1 col1";
+      row1col1.style.padding = "50";
+      var row1col2 = document.createElement("td");
+      row1col2.innerHTML = "row1 col2";
+      var row1col3 = document.createElement("td");
+      row1col3.innerHTML = "row1 col3";
+      var row1col4 = document.createElement("td");
+      row1col4.innerHTML = "row1 col4";
+      var row2 = document.createElement("tr");
+      var row2col1 = document.createElement("td");
+      row2col1.innerHTML = "row2 col1";
+      var row2col2 = document.createElement("td");
+      row2col2.innerHTML = "row2 col2";row2col2.setAttribute("colspan", "2");
+      var row2col3 = document.createElement("td");
+      row2col3.innerHTML = "row2 col3";
+      row1.appendChild(row1col1);
+      row1.appendChild(row1col2);
+      row1.appendChild(row1col3);
+      row1.appendChild(row1col4);
+      row2.appendChild(row2col1);
+      row2.appendChild(row2col2);
+      row2.appendChild(row2col3);
+      table.appendChild(row1);
+      table.appendChild(row2);
+      body.appendChild(table);
+    });
+    //to here
+  </script>
+</html>
