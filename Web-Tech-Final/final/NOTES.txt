@@ -1,0 +1,137 @@
+HTML
+- table
+- link
+- form
+- frame
+- audio, video, object
+
+CSS
+- defining : inline, embedded, linked
+- tag, id, class, tag specific, grouping, contextual, pseudo class	
+- tag p, h1, h2 { color: red; }
+- id # and class .
+- tag specific p.redbold {color: red; } ... <p class="redbold"></p>
+- p b {color: red} <p><b>Effect here only</b></p>
+- a:hover {text-transform: uppercase;}
+- measurement %, cm, em [relative measurement in em spaces], ex [relative to font x height], in, mm, pc [pica - 12 points], pt [1/72 per inch], px
+Categories
+- font and type settings - color, font-family, font-size, font-style, text-align, text-decoration
+- background - background-color, background-image, background-position
+- block
+- box
+- border - border-width, border-top, border-top-color, border-top-width [bottom, left, right]
+- list
+- positioning
+
+JS
+- <script>...</script>
+- <script> function hello() {alert("Hello")}
+- onload="hello();", onclick, onsubmit, onchange, onfocus, onblur, onmouseover, onselect, onunload
+- var, alert
+
+DOM
+- interface for html and xml
+- document, element, window, event, style, range, selection
+- document.getElementbyId("id1"), document.getElementsbyClassName("class1"), document.getElementsByTagName("p"), document.querySelectAll("div.class1")
+- parentNode, childNodes[0], firstChild
+- document.createElement("p"), document.createTextNode("text"), document.getElementById("id1").appendChild(document.createElement("li"))
+- var items = new Array;
+- .push(), items[0]
+
+JSON
+- var jsonObject = {
+"property1" : val,
+"function1" : function(parameter){}
+}
+@ var jsonObject = new Object()
+
+JQUERY
+- <script src="...jquery/3.6.0/jquery.min.js"></script>
+- $(selector).method(value);
+- $(document).ready(function(){alert("hi")})
+- $("#id1").text('Apple');
+- GET = text(), html(), val(), attr("?")
+- SET = .text(x), .html(x), val(x), attr(x,y)
+- ADD/REMOVE = clone, append, prepend, after, before, remove, empty
+- CSS = addClass, removeClass, toggleClass, css("property", value)
+- TRAVERSING = parent, parents, siblings, children, find, next, nextAll, nextUntil
+- FILTERING = first, last, eq, filter, not
+- EVENTS = click, dblclick, focus, blur, change, on("event", "element" ,function)
+- MISC = $("?").
+
+AJAX
+var ajax = new XMLHttpRequest()
+ajax.onreadystatechange = function() {}
+ajax.open('GET', "localhost/request.php", true)
+ajax.send()
+ajax.onload = function() {
+if(this.status == 200){
+console.log(JSON.parse(this.responseText));
+}
+}
+ajax.send()
+
+$.ajax(
+{
+url: "localhost/request.php"
+type: 'GET',
+dataType: 'json',
+success: function(data){
+console.log(${data.name})
+}
+}
+)
+
+
+ajax.readyState - 0 not initialized, 1 setup, 2 submitted, 3 process, 4 completed
+ajax.status - 200 ok, 404 page not found, 0 corss domain request restriction
+
+
+VUE
+- 
+const vueApp = Vue.createApp({
+data() { return {avg:... //anydata}},
+watch: {avg(newValue, oldValue){}}, //if data properties of my vue instance change
+methods: {function()},
+mounted(){//boleh panggil methods untuk initial kalau mount}
+});
+
+vueApp.mount("#project");
+
+kat html - 
+<p>{{avg.data}}</p>
+<button v-on:click="increase()"></button>
+<p v-show="boolValue">If bool value is T then show, else hidden</p> 
+<p v-if="boolValue">If bool value is T then rendered, else not in DOM</p>
+<li v-for="item in items" :key="item.id">{{item.name}}</li>
+
+PHP
+<?php
+include "dbconfig ke pape ke.php";
+
+$variable = "variable1";
+if(..){echo "print";}
+
+if($_SERVER['REQUEST_METHOD]=='GET'){
+$conn = new PDO("mysql:host=localhost;dbname=fruits", "root", "123")
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$stmt = $conn->query("SELECT * FROM marks");
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$crudStatus->status = 'success';
+$crudStatus->data = $result;
+}
+if($_SERVER['REQUEST_METHOD]=='POST'){
+$stmt = $conn->prepare("INSERT INTO marks (name, session, cw, fe) VALUES (:name, :session, :cw, :fe)");
+$name, $session... = null;
+$stmt->bindParam(':name', $name);
+$stmt->bindParam(':session', $session);
+$stmt->bindParam(':cw', $cw);
+$stmt->bindParam(':fe', $fe);
+foreach ($data as $item) {$name = $item->name;$session = $item->session;
+$cw = $item->cw;
+$fe = $item->fe;
+$stmt->execute();
+}
+}
+
+?>
