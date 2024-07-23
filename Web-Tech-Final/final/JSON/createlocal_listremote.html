@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON with jQuery+AJAX+PHP</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            testJSON();
+        });
+
+        function testJSON() {
+            var students = [{
+                "name": "Brenden Eich",
+                "matric_no": "AC123",
+                "marks": {
+                    "cw": 50,
+                    "fe": 25
+                }
+            },
+            {
+                "name": "Rasmus Lerdof",
+                "matric_no": "AC456",
+                "marks": {
+                    "cw": 55,
+                    "fe": 33
+                }
+            }];
+
+            /* Example to convert back to JSON string */
+           //$("div").text(JSON.stringify(students));
+
+           var data = "data=" + JSON.stringify(students);
+           $("div").load("http://localhost/webtech/final/JSON/parseJSON.php", data);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

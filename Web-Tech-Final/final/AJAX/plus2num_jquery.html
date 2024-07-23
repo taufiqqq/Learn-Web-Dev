@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plus 2 Numbers</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("input#clkbtn").click(function () {
+                var str = $("form").serialize();
+
+                /* POST/GET method(both) */
+                $("span").load("http://localhost/webtech/final/AJAX/plus2num.php", str);
+
+                /* GET method */
+                // $.get("http://localhost/webtech/final/AJAX/plus2num.php", str,
+                //     function (data, status) { setResult(data, status); });
+
+                /* POST method */
+                // $.post("http://localhost/webtech/final/AJAX/plus2num.php", str,      
+                // function(data, status) { setResult(data, status); });
+
+            });
+        });
+        //if use GET or POST
+        function setResult(data, status) {
+            $("span").text(data);
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <form name="f">
+        Num1: <input type="text" name="num1" size="3">
+        +
+        Num2: <input type="text" name="num2" size="3">
+        =
+        <span id="result">???</span>
+        <input type="button" value="Count" id="clkbtn">
+    </form>
+</body>
+
+</html>

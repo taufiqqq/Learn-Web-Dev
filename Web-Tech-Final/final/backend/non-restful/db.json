@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Ali Johan",
+      "email": "alijo@utm.my",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Seman Rihan",
+      "email": "semrihan@utm.my",
+      "role": "sales"
+    },
+    {
+      "role": "client",
+      "id": "3"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Laptop",
+      "price": 2999.99
+    },
+    {
+      "id": "3",
+      "name": "Phone",
+      "price": 1999.5
+    },
+    {
+      "id": "5",
+      "name": "Desk",
+      "price": 500
+    }
+  ]
+}

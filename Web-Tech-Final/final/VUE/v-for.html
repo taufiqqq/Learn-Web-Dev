@@ -1,0 +1,31 @@
+<html>
+  <body id="myApp">
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Mark</th>
+        </tr>
+        <tr v-for="stud in studList">
+            <td>{{ stud.name }}</td>
+            <td>{{ stud.mark }}</td>
+        </tr>
+    </table>
+  </body>
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+  const vueApp = Vue.createApp({ 
+    data() {  
+      return {
+        studList:[{name:'Adam', mark:76}, {name:'Zack', mark:45}]
+      };
+    },
+    methods: {
+       
+    },
+  });
+
+  vueApp.mount("#myApp");
+</script>

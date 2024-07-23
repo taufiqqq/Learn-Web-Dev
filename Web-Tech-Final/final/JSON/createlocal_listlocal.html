@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON wiht jQuery</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            testJSON();
+        });
+
+        function testJSON() {
+            var students = [{
+                "name": "Brenden Eich",
+                "matric_no": "AC123",
+                "marks": {
+                    "cw": 50,
+                    "fe": 25
+                }
+            },
+            {
+                "name": "Rasmus Lerdof",
+                "matric_no": "AC456",
+                "marks": {
+                    "cw": 55,
+                    "fe": 33
+                }
+            }];
+
+            /* Example to convert back to JSON string */
+            alert(JSON.stringify(students));
+
+            var output = "";
+            for(var i=0;i<students.length;i++){
+                var total= students[i].marks.cw + students[i].marks.fe;
+                output += students[i].name + ", " 
+                + students[i].matric_no + ", " +
+                total + "\n";
+            }
+
+            $("pre").html(output);
+        }
+
+    </script>
+</head>
+
+<body>
+    <pre></pre>
+</body>
+
+</html>

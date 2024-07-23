@@ -1,0 +1,20 @@
+<html>
+    <body id="myApp">
+        <h3>{{myNum}}</h3>
+        <button v-on:click="increase()">+</button>
+    </body>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const vueApp = Vue.createApp({
+        data() {
+            return { myNum:5}
+        },
+        methods: {
+            increase() {this.myNum++;}
+        },
+    });
+    vueApp.mount("#myApp");
+</script>
+</html>

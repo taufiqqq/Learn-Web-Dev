@@ -1,0 +1,56 @@
+<html>
+  <body id="myApp">
+    <p>Name: {{ myName }}</p>
+
+    <p>Num: {{ myNum }}</p>
+    <p>
+        <button v-on:click="decrease()"> - </button>
+        <button v-on:click="increase()"> + </button>
+    </p>
+    <!-- warningMsg can be 'not less than 0' or 'greater than 9'-->
+    <p v-show="showWarn" v-bind:style="{color: warnColor}">Warning! number can't {{warningMsg}}</p>
+  </body>
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+  const vueApp = Vue.createApp({ 
+    data() {  
+      return {
+        myNum: 5, 
+        myName: 'Razak',
+        showWarn: false,
+        warningMsg: null,
+        warnColor: 'red'
+      };
+    },
+    methods: {
+        decrease() { 
+            this.myNum--;
+            this.checkNum();
+        },
+        increase() { 
+            this.myNum++;
+            this.checkNum();
+        },
+        checkNum() {
+            if (this.myNum < 0) {
+                this.showWarn = true;
+                this.warningMsg = 'not less than 0';
+                this.warnColor = 'blue';
+
+            } else if (this.myNum > 9) {
+                this.showWarn = true;
+                this.warningMsg = 'greater than 9';
+                this.warnColor = 'red';
+                
+            } else {
+                this.showWarn = false;
+            }
+        }
+    },
+  });
+
+  vueApp.mount("#myApp");
+</script>

@@ -1,0 +1,36 @@
+<html>
+    <body id="myApp">
+        <h3>{{myNum}}</h3>
+        <button v-on:click="increase()">+</button>
+        <button v-on:click="decrease()">-</button>
+        <p v-show="highVal">Warning! Number is greater than 9</p>
+    </body>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const vueApp = Vue.createApp({
+        data() {
+            return {
+                myNum:5,
+                highVal:false,
+            }
+        },
+        methods: {
+            increase() {
+                this.myNum++;
+                if(this.myNum > 9){
+                    this.highVal=true;
+                }
+            },
+            decrease() {
+                this.myNum--;
+                if(this.myNum <= 9){
+                    this.highVal=false;
+                }
+            }
+        },
+    });
+    vueApp.mount("#myApp");
+</script>
+</html>

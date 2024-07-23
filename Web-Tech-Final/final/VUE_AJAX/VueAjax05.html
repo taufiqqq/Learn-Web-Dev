@@ -1,0 +1,48 @@
+<html>
+
+<body id="myApp">
+    <table border="1">
+        <tr>
+            <th>Session-Semester</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        <tr v-for="(seminfo, idx) in sessemList">
+            <td>{{seminfo.sesi}}-{{seminfo.semester}}</td>
+            <td>{{seminfo.tarikh_mula}}</td>
+            <td>{{seminfo.tarikh_tamat}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- <script src="vue.global.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    function createVueApp(dataList) {
+        const vueApp = Vue.createApp({
+            data() {
+                return {
+                    sessemList: dataList,
+                };
+
+            },
+            methods: {
+            },
+        });
+        vueApp.mount("#myApp");
+    }
+
+    var url = 'http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=sesisemester';
+
+    $.get(url,
+          function (data, status) {
+            console.log(JSON.parse(data));
+            createVueApp(JSON.parse(data)); // this not work
+          }
+    );
+
+</script>

@@ -1,0 +1,43 @@
+<html>
+
+<body id="myApp">
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Mark</th>
+        </tr>
+        <tr v-for="stud in studList">
+            <td>{{ stud.name }}</td>
+            <td>{{ stud.mark }}</td>
+        </tr>
+    </table><br>
+    Name: <input type="text" v-model="student.name"><br>
+    Mark: <input type="text" v-model="student.mark"><br>
+    <button v-on:click="addStudent()">Add</button>
+</body>
+
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const vueApp = Vue.createApp({
+        data() {
+            var n = '???';
+            return {
+                student: { name: n, mark: 0, },
+                studList: [ { name: 'Adam', mark: 76 }, 
+                            { name: 'Zack', mark: 45 } ]
+            };
+        },
+        methods: {
+            addStudent() {
+                // clone this.student to a new object/instance
+                var newStud = JSON.parse(JSON.stringify(this.student));
+                this.studList.push(newStud);
+            }
+        },
+    });
+
+    vueApp.mount("#myApp");
+</script>

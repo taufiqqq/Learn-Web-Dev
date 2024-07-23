@@ -1,0 +1,89 @@
+<html>
+
+<body id="myApp">
+    <div v-show="showList">
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Mark</th>
+                <th>Operations</th>
+            </tr>
+            <tr v-for="(stud, idx) in studList">
+                <td>{{ stud.name }}</td>
+                <td>{{ stud.mark }}</td>
+                <td>
+                    <button v-on:click="updateStudent(idx, 0)">Update</button>
+                    <button v-on:click="deleteStudent(idx)">Delete</button>
+                </td>
+            </tr>
+        </table><br>
+        Name: <input type="text" v-model="student.name"><br>
+        Mark: <input type="text" v-model="student.mark"><br>
+        <button v-on:click="addStudent()">Add</button>
+    </div>
+    <div v-show="showUpdate">
+        <h3>Update Student</h3>
+        Name: <input type="text" v-model="student.name"><br>
+        Mark: <input type="text" v-model="student.mark"><br>
+        <button v-on:click="updateStudent(idxUpdate, 1)">Submit</button>
+        <button v-on:click="cancelUpdate()">Cancel</button>
+    </div>
+</body>
+
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- <script src="vue.global.js"></script> -->
+
+<script>
+    const vueApp = Vue.createApp({
+        data() {
+            var n = '???';
+            return {
+                showList: true,
+                showUpdate: false,
+                student: { name: n, mark: 0, },
+                idxUpdate: -1,
+                studList: [{ name: 'Adam', mark: 76 },
+                { name: 'Zack', mark: 45 }]
+            };
+        },
+        methods: {
+            addStudent() {
+                // clone this.student to a new object/instance
+                var newStud = JSON.parse(JSON.stringify(this.student));
+                this.studList.push(newStud);
+            },
+            deleteStudent(idx) {
+                alert("Delete student at index " + idx);
+                this.studList.splice(idx, 1);
+            },
+            updateStudent(idx, phase) {
+                if (phase == 0) {
+                    alert("Update student at index " + idx);
+                    this.idxUpdate = idx;
+                    this.showList = false;
+                    this.showUpdate = true;
+                    this.student.name = this.studList[idx].name;
+                    this.student.mark = this.studList[idx].mark;
+
+                } else if (phase == 1) {
+                    alert("Do the real update student at index " + idx);
+                    this.studList[idx].name = this.student.name;
+                    this.studList[idx].mark = this.student.mark;
+                    this.showList = true;
+                    this.showUpdate = false;
+                }
+
+            },
+            cancelUpdate() {
+                this.showUpdate = false;
+                this.showList = true;
+                this.student.name = "???";
+                this.student.mark = 0;
+            },
+        },
+    });
+
+    vueApp.mount("#myApp");
+</script>
